@@ -28,12 +28,13 @@ class Siswa extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['ID', 'Nama', 'NIS', 'ID_Kelas', 'Tgl_Masuk'], 'required'],
+            [['ID', 'Nama', 'NIS', 'ID_Kelas', 'tglmasuk', 'gajiortu'], 'required'],
             [['ID'], 'integer'],
             [['Nama'], 'string', 'max' => 200],
             [['NIS'], 'string', 'max' => 15],
             [['ID_Kelas'], 'string', 'max' => 10],
-            [['Tgl_Masuk'], 'string', 'max' => 15],
+            [['tglmasuk'], 'date', 'max' => 15],
+            [['gajiortu'], 'string'],
             [['ID'], 'unique'],
         ];
     }
@@ -48,7 +49,8 @@ class Siswa extends \yii\db\ActiveRecord
             'Nama' => 'Nama',
             'NIS' => 'Nis',
             'ID_Kelas' => 'Id Kelas',
-            'Tgl_Masuk' => 'Tgl Masuk',
+            'tglmasuk' => 'Tgl Masuk',
+            'gajiortu' => 'Gaji Ortu',
         ];
     }
 }

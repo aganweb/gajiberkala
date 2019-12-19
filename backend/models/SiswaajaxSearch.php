@@ -2,28 +2,29 @@
 
 namespace backend\models;
 
+use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\Siswa;
+use common\models\Siswaajax;
 
 /**
- * SiswaSearch represents the model behind the search form of `common\models\Siswa`.
+ * SiswaajaxSearch represents the model behind the search form about `common\models\Siswaajax`.
  */
-class SiswaSearch extends Siswa
+class SiswaajaxSearch extends Siswaajax
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['ID'], 'integer'],
-            [['Nama', 'NIS', 'ID_Kelas', 'tglmasuk', 'gajiortu',], 'safe'],
+            [['ID', 'gajiortu'], 'integer'],
+            [['Nama', 'NIS', 'ID_Kelas', 'tglmasuk'], 'safe'],
         ];
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function scenarios()
     {
@@ -40,10 +41,7 @@ class SiswaSearch extends Siswa
      */
     public function search($params)
     {
-        $query = Siswa::find();
-        $query -> joinWith('kelas');
-
-        // add conditions that should always apply here
+        $query = Siswaajax::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -57,16 +55,15 @@ class SiswaSearch extends Siswa
             return $dataProvider;
         }
 
-        // grid filtering conditions
         $query->andFilterWhere([
             'ID' => $this->ID,
+            'tglmasuk' => $this->tglmasuk,
+            'gajiortu' => $this->gajiortu,
         ]);
 
         $query->andFilterWhere(['like', 'Nama', $this->Nama])
             ->andFilterWhere(['like', 'NIS', $this->NIS])
-            ->andFilterWhere(['like', 'ID_Kelas', $this->ID_Kelas])
-            ->andFilterWhere(['like', 'tglmasuk', $this->tglmasuk])
-            ->andFilterWhere(['like', 'gajiortu', $this->gajiortu]);
+            ->andFilterWhere(['like', 'ID_Kelas', $this->ID_Kelas]);
 
         return $dataProvider;
     }

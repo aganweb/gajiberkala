@@ -11,8 +11,10 @@ use Yii;
  * @property string $Nama
  * @property string $NIS
  * @property string $ID_Kelas
+ * @property string $tglmasuk
+ * @property int $gajiortu
  */
-class Siswa extends \yii\db\ActiveRecord
+class Siswaajax extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -28,12 +30,12 @@ class Siswa extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['ID', 'Nama', 'NIS', 'ID_Kelas'], 'required'],
-            [['ID'], 'integer'],
+            [['ID', 'Nama', 'NIS', 'ID_Kelas', 'tglmasuk', 'gajiortu'], 'required'],
+            [['ID', 'gajiortu'], 'integer'],
+            [['tglmasuk'], 'safe'],
             [['Nama'], 'string', 'max' => 200],
             [['NIS'], 'string', 'max' => 15],
             [['ID_Kelas'], 'string', 'max' => 10],
-            [['tglmasuk'], 'string'],
             [['ID'], 'unique'],
         ];
     }
@@ -48,7 +50,8 @@ class Siswa extends \yii\db\ActiveRecord
             'Nama' => 'Nama',
             'NIS' => 'Nis',
             'ID_Kelas' => 'Id Kelas',
-            'tglmasuk' => 'Tgl Masuk',
+            'tglmasuk' => 'Tglmasuk',
+            'gajiortu' => 'Gajiortu',
         ];
     }
     public function getKelas()
