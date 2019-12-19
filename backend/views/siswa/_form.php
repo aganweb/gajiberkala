@@ -26,7 +26,8 @@ use kartik\date\DatePicker;
             
             'options' => ['placeholder' => 'Pilih Tanggal Masuk ...'],
             'pluginOptions' => [
-                'todayHighlight' => true
+                'autoclose'=>true,
+                'format' => 'yyyy-mm-dd'
 		    ]
 		]);
     ?>

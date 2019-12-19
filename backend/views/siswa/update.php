@@ -13,30 +13,11 @@ $this->params['breadcrumbs'][] = ['label' => $model->ID, 'url' => ['view', 'id' 
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="siswa-update">    
-	<?php $form = ActiveForm::begin(); ?>
+    
+    <h1><?= Html::encode($this->title) ?></h1>
 
-    <?= $form->field($model, 'ID')->textInput() ?>
-
-    <?= $form->field($model, 'Nama')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'NIS')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'ID_Kelas')->textInput(['maxlength' => true]) ?>
-
-    <?=
-		$form->field($model, 'Tgl_Masuk')->widget(DatePicker::className(), [
-            
-            'options' => ['placeholder' => 'Pilih Tanggal Masuk ...'],
-            'pluginOptions' => [
-                'todayHighlight' => true
-		    ]
-		]);
-    ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
-    </div>
-
-    <?php ActiveForm::end(); ?>
+    <?= $this->render('_form', [
+        'model' => $model,
+    ]) ?>
 
 </div>

@@ -33,7 +33,7 @@ class Siswa extends \yii\db\ActiveRecord
             [['Nama'], 'string', 'max' => 200],
             [['NIS'], 'string', 'max' => 15],
             [['ID_Kelas'], 'string', 'max' => 10],
-            [['Tgl_Masuk'], 'date'],
+            [['Tgl_Masuk'], 'string', 'max' => 15],
             [['ID'], 'unique'],
         ];
     }
