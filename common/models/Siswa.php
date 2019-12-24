@@ -34,6 +34,7 @@ class Siswa extends \yii\db\ActiveRecord
             [['NIS'], 'string', 'max' => 15],
             [['ID_Kelas'], 'string', 'max' => 10],
             [['tglmasuk'], 'string'],
+            [['gajiortu'], 'string'],
             [['ID'], 'unique'],
         ];
     }
@@ -49,6 +50,7 @@ class Siswa extends \yii\db\ActiveRecord
             'NIS' => 'Nis',
             'ID_Kelas' => 'Id Kelas',
             'tglmasuk' => 'Tgl Masuk',
+            'gajiortu' => 'Gaji Ortu',
         ];
     }
     public function getKelas()
